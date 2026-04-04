@@ -1,237 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rudrashk Gym | Jabalpur | Unchain the Beast</title>
+    <title>Rudraksh Gym | The Ultimate Fitness Empire</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    
     <style>
-        /* Smooth scrolling for anchor links */
-        html {
-            scroll-behavior: smooth;
-        }
+        :root { --accent: #ff004c; --bg: #000000; --card: #0a0a0a; }
+        body { background-color: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: -2px; }
+        
+        /* Advanced Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 50px; }
 
-        .text-neon {
-            text-shadow: 0 0 15px rgba(234, 88, 12, 0.7);
-        }
+        /* Smooth Glass Effects */
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
+        .glass-heavy { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(30px); border: 1px solid var(--accent); }
+
+        /* Text Effects */
+        .outline-text { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
+        .gradient-text { background: linear-gradient(to right, #ff004c, #ff7b00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Animation Classes */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Infinite Marquee */
+        .marquee { display: flex; overflow: hidden; user-select: none; gap: 2rem; border-y: 1px solid rgba(255,255,255,0.1); padding: 2rem 0; }
+        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 2rem; animation: scroll 30s linear infinite; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+        /* Image Hover Effect */
+        .img-container { overflow: hidden; border-radius: 30px; position: relative; }
+        .img-container img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .img-container:hover img { transform: scale(1.1) rotate(2deg); }
+
+        /* Custom Shapes */
+        .shape-blob { position: absolute; width: 300px; height: 300px; background: var(--accent); opacity: 0.1; filter: blur(80px); border-radius: 50%; z-index: -1; }
     </style>
 </head>
+<body>
 
-<body class="bg-black text-white font-sans overflow-x-hidden">
-
-    <nav class="bg-zinc-950/80 backdrop-blur-lg sticky top-0 z-50 border-b border-orange-600/20">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <span class="text-3xl font-extrabold italic tracking-tighter text-orange-600 text-neon">RUDRASHK GYM</span>
-            <div class="hidden md:flex space-x-8 font-bold uppercase text-xs tracking-wider">
-                <a href="#home" class="hover:text-orange-600 transition">Home</a>
-                <a href="#workouts" class="hover:text-orange-600 transition">Workouts</a>
-                <a href="#plans" class="hover:text-orange-600 transition">Plans</a>
-                <a href="#bmi" class="hover:text-orange-600 transition">BMI</a>
-                <a href="#gallery" class="hover:text-orange-600 transition">Gallery</a>
-            </div>
-            <a href="#contact"
-                class="bg-orange-600 text-white px-6 py-3 rounded-full font-bold text-sm hover:scale-105 transition shadow-[0_0_15px_rgba(234,88,12,0.4)]">BOOK
-                FREE TRIAL</a>
+    <nav class="fixed w-full z-[1000] py-6 px-8 flex justify-between items-center transition-all duration-500" id="main-nav">
+        <div class="heading-font text-2xl font-black italic tracking-tighter">
+            RUDRA<span class="text-red-600">KSH</span>
+        </div>
+        <div class="hidden xl:flex items-center gap-10 text-[9px] font-black uppercase tracking-[5px] text-gray-500">
+            <a href="#home" class="nav-link hover:text-white transition">Base</a>
+            <a href="#about" class="nav-link hover:text-white transition">History</a>
+            <a href="#stats" class="nav-link hover:text-white transition">Data</a>
+            <a href="#programs" class="nav-link hover:text-white transition">Systems</a>
+            <a href="#trainers" class="nav-link hover:text-white transition">Elite</a>
+            <a href="#bmi" class="nav-link hover:text-white transition">Matrix</a>
+            <a href="#pricing" class="nav-link hover:text-white transition">Pass</a>
+        </div>
+        <div class="flex gap-4">
+            <button class="hidden md:block text-[9px] font-black uppercase tracking-widest text-gray-400 hover:text-white border-r border-white/10 pr-4">Login</button>
+            <button class="bg-white text-black px-8 py-3 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-xl">Join the 1%</button>
         </div>
     </nav>
 
-    <section id="home" class="relative h-[95vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80"
-                class="w-full h-full object-cover opacity-30" alt="Gym Motivation">
-        </div>
-        <div class="relative z-10 text-center px-4" data-aos="zoom-out" data-aos-duration="1500">
-            <p class="text-xs uppercase tracking-[0.5em] text-orange-600 font-bold mb-4">No Pain No Gain</p>
-            <h1 class="text-6xl md:text-9xl font-black italic uppercase leading-[0.9] mb-8 text-neon">UNCHAIN <br>THE
-                <span class="text-orange-600">BEAST</span>
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="shape-blob top-20 left-20"></div>
+        <div class="shape-blob bottom-20 right-20 bg-orange-600"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070')] bg-cover bg-center opacity-20 grayscale" id="hero-bg"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-6xl">
+            <h1 class="heading-font text-[12vw] md:text-[10vw] leading-[0.85] mb-8" data-aos="fade-up">
+                BEYOND <br> <span class="outline-text">PHYSICAL</span>
             </h1>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
-                <a href="#plans"
-                    class="bg-orange-600 text-white px-12 py-5 rounded-md font-black text-xl hover:bg-white hover:text-orange-600 transition shadow-[0_0_25px_rgba(234,88,12,0.6)]">JOIN
-                    THE CLAN</a>
-                <a href="#workouts"
-                    class="text-white border-b-2 border-orange-600 font-bold py-2 hover:text-orange-600 transition">EXPLORE
-                    WORKOUTS →</a>
+            <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                <p class="max-w-md text-gray-500 text-xs text-left border-l border-red-600 pl-6 leading-relaxed">
+                    Rudraksh Gym is Jabalpur's premier performance hub. We don't just train bodies; we forge mindsets. Join a community of elite performers.
+                </p>
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center animate-bounce">↓</div>
+                    <span class="text-[9px] font-black uppercase tracking-[4px] text-gray-400 self-center">Scroll to Evolve</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="workouts" class="py-24 bg-zinc-950 px-6">
-        <div class="max-w-7xl mx-auto">
-            <p class="text-center text-xs uppercase tracking-widest text-orange-600 font-bold mb-2">Build Your Body</p>
-            <h2 class="text-center text-5xl font-black italic mb-20 uppercase" data-aos="fade-up">WORKOUT PROGRAMS</h2>
+    <div class="marquee bg-zinc-950">
+        <div class="marquee-content">
+            <span class="heading-font text-6xl opacity-10">NO EXCUSES •</span>
+            <span class="heading-font text-6xl text-red-600 italic">LIMITLESS •</span>
+            <span class="heading-font text-6xl opacity-10">FORGE GLORY •</span>
+            <span class="heading-font text-6xl outline-text">RUDRAKSH GYM •</span>
+            <span class="heading-font text-6xl opacity-10">STAY HUNGRY •</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+            <span class="heading-font text-6xl opacity-10">NO EXCUSES •</span>
+            <span class="heading-font text-6xl text-red-600 italic">LIMITLESS •</span>
+            <span class="heading-font text-6xl opacity-10">FORGE GLORY •</span>
+            <span class="heading-font text-6xl outline-text">RUDRAKSH GYM •</span>
+            <span class="heading-font text-6xl opacity-10">STAY HUNGRY •</span>
+        </div>
+    </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 group hover:border-orange-600 transition duration-500"
-                    data-aos="fade-up">
-                    <div
-                        class="w-16 h-16 bg-black rounded-full flex items-center justify-center border-2 border-orange-600 mb-8 group-hover:scale-110 transition">
-                        <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M20.57 14.86L22 13.43L20.57 12L17 15.57L14.43 13L18 9.43L16.57 8L15.14 9.43L13 7.29L14.43 5.86L13 4.43L11.57 5.86L9.43 3.71L10.86 2.29L9.43.86L8 2.29L5.86.14L4.43 1.57L5.86 3L2.29 6.57L3.71 8L7.29 4.43L9.43 6.57L8 8L9.43 9.43L11.57 8L13.71 10.14L12.29 11.57L13.71 13L15.14 11.57L17.29 13.71L15.86 15.14L17.29 16.57L18.71 15.14L20.86 17.29L19.43 18.71L20.86 20.14L22.29 18.71L20.14 16.57L21.57 15.14L20.57 14.86Z" />
-                        </svg>
+    <section id="about" class="py-40 px-8">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+            <div class="img-container shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=2069" alt="Elite Training" class="w-full grayscale hover:grayscale-0 transition duration-1000">
+                <div class="absolute bottom-10 left-10 glass p-6 rounded-2xl">
+                    <h4 class="heading-font text-2xl italic font-black">EST. 2026</h4>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-2">Born in Jabalpur</p>
+                </div>
+            </div>
+            <div>
+                <h2 class="heading-font text-5xl mb-10 leading-tight reveal-up">THE <span class="gradient-text">PHILOSOPHY</span> OF STRENGTH</h2>
+                <p class="text-gray-400 text-sm leading-[2] mb-12 reveal-up">
+                    Hamara maqsad sirf muscle banana nahi hai. Hum believe karte hain ki jab aapka sharir mazboot hota hai, toh aapka dimaag aur hausla bhi badhta hai. Rudraksh Gym ek aisi jagah hai jahan technology aur raw power ka milan hota hai. 
+                    <br><br>
+                    C++ ki coding ki tarah, hum har ek workout ko optimize karte hain taaki aapko "Peak Performance" mil sake. Bina kisi compromise ke.
+                </p>
+                <div class="grid grid-cols-2 gap-8 reveal-up">
+                    <div>
+                        <div class="text-4xl font-black mb-2">99%</div>
+                        <p class="text-[10px] uppercase font-black text-gray-600 tracking-widest">Success Rate</p>
                     </div>
-                    <h4 class="text-xl font-bold mb-4">Body Building</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Master the art of hypertrophy and sculpt your
-                        physique with expert guidance.</p>
-                    <a href="#" class="text-orange-600 font-bold text-sm group-hover:underline">Learn More →</a>
-
-                </div>
-
-
-                <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 group hover:border-orange-600 transition duration-500"
-                    data-aos="fade-up" data-aos-delay="100">
-                    <div
-                        class="w-16 h-16 bg-black rounded-full flex items-center justify-center border-2 border-orange-600 mb-8 group-hover:scale-110 transition">
-                        <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M13.5 5.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5M10.5 5.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5M18 10h-2c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2H6c-1.1 0-2 .9-2 2v2h16v-2c0-1.1-.9-2-2-2m-8 6h-2v4H6v-4H4v-2h16v2h-2v4h-2v-4h-2v2h-2v-2z" />
-                        </svg>
+                    <div>
+                        <div class="text-4xl font-black mb-2">24/7</div>
+                        <p class="text-[10px] uppercase font-black text-gray-600 tracking-widest">Elite Access</p>
                     </div>
-                    <h4 class="text-xl font-bold mb-4">Weight Loss</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Scorch fat and boost metabolism with our
-                        dynamic cardio-strength circuits.</p>
-
-                    <a href="#" class="text-orange-600 font-bold text-sm group-hover:underline">Learn More →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="plans" class="py-24 bg-black px-6">
-        <h2 class="text-center text-5xl font-black italic mb-16 uppercase text-neon" data-aos="fade-up">Membership Plans
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div class="bg-zinc-900 p-10 rounded-2xl border border-zinc-800 hover:border-orange-600 transition duration-500"
-                data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-2xl font-bold mb-4 text-orange-600">Starter</h3>
-                <p class="text-5xl font-black mb-6">₹1200<span class="text-lg font-normal text-gray-500">/mo</span></p>
-                <ul class="space-y-4 text-gray-400 mb-10 text-sm font-medium">
-                    <li>✓ High-Quality Equipment Access</li>
-                    <li>✓ Standard Locker Room</li>
-                    <li>✓ Open 6 Days a Week</li>
-                    <li>✗ Personal Trainer</li>
+    <section id="stats" class="bg-zinc-950 py-32">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div class="reveal-up">
+                <div class="text-6xl font-black italic text-red-600 mb-2">500+</div>
+                <div class="text-[10px] font-black uppercase tracking-[5px] text-gray-500">Elite Warriors</div>
+            </div>
+            <div class="reveal-up" style="transition-delay: 0.1s;">
+                <div class="text-6xl font-black italic text-white mb-2">20+</div>
+                <div class="text-[10px] font-black uppercase tracking-[5px] text-gray-500">Master Coaches</div>
+            </div>
+            <div class="reveal-up" style="transition-delay: 0.2s;">
+                <div class="text-6xl font-black italic text-red-600 mb-2">100+</div>
+                <div class="text-[10px] font-black uppercase tracking-[5px] text-gray-500">Modern Units</div>
+            </div>
+            <div class="reveal-up" style="transition-delay: 0.3s;">
+                <div class="text-6xl font-black italic text-white mb-2">5★</div>
+                <div class="text-[10px] font-black uppercase tracking-[5px] text-gray-500">User Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="py-40 px-8 bg-black">
+        <div class="text-center mb-32">
+            <h2 class="heading-font text-5xl md:text-7xl reveal-up italic">OPERATIONAL <span class="outline-text">SYSTEMS</span></h2>
+            <p class="text-gray-500 text-xs mt-6 tracking-[8px] uppercase font-black reveal-up">Select your transformation protocol</p>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+            <div class="glass p-12 rounded-[60px] hover:border-red-600 transition-all duration-500 reveal-up group relative overflow-hidden">
+                <div class="absolute -bottom-10 -right-10 text-[10rem] opacity-[0.02] heading-font italic pointer-events-none">01</div>
+                <div class="w-16 h-16 bg-red-600/10 rounded-2xl flex items-center justify-center text-3xl mb-10 group-hover:bg-red-600 transition duration-500 group-hover:scale-110">⚡</div>
+                <h3 class="heading-font text-xl mb-6">Neural HIIT</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-8">High intensity training combined with cognitive drills to improve reaction time and fat metabolism simultaneously.</p>
+                <ul class="text-[10px] font-black text-gray-400 space-y-3 uppercase tracking-widest border-t border-white/5 pt-8">
+                    <li>• Heart Rate Monitoring</li>
+                    <li>• Dynamic Reflex Training</li>
+                    <li>• Rapid Fat Oxidation</li>
                 </ul>
-                <button
-                    class="w-full py-4 border-2 border-orange-600 text-orange-600 font-bold rounded-lg hover:bg-orange-600 hover:text-white transition">SELECT
-                    PLAN</button>
             </div>
-            <div class="bg-orange-600 p-10 rounded-2xl scale-105 shadow-3xl relative overflow-hidden group"
-                data-aos="fade-up">
-                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition duration-500"></div>
-                <span
-                    class="absolute top-0 right-10 bg-black text-orange-600 px-5 py-1.5 rounded-b-lg font-black text-xs uppercase tracking-wider">Most
-                    Popular</span>
-                <h3 class="text-2xl font-bold mb-4 text-black">Pro Beast</h3>
-                <p class="text-5xl font-black mb-6 text-black">₹3000<span
-                        class="text-lg font-normal text-zinc-800">/mo</span></p>
-                <ul class="space-y-4 text-zinc-950 mb-10 text-sm font-semibold">
-                    <li>✓ All Starter Features</li>
-                    <li>✓ 2 Days/Week Personal Trainer</li>
-                    <li>✓ Custom Diet Plan</li>
-                    <li>✓ Steam Bath Access</li>
-                    <li>✓ Gym Merchandise (T-Shirt)</li>
+            <div class="bg-white text-black p-12 rounded-[60px] reveal-up group relative overflow-hidden shadow-2xl transform lg:scale-110 z-10">
+                <div class="absolute -bottom-10 -right-10 text-[10rem] opacity-[0.05] heading-font italic pointer-events-none">02</div>
+                <div class="w-16 h-16 bg-black rounded-2xl flex items-center justify-center text-3xl mb-10 text-white">💪</div>
+                <h3 class="heading-font text-xl mb-6">Titan Strength</h3>
+                <p class="text-gray-700 text-sm leading-relaxed mb-8">Olympic lifting, powerlifting and classical bodybuilding merged into one high-performance protocol.</p>
+                <ul class="text-[10px] font-black text-gray-500 space-y-3 uppercase tracking-widest border-t border-black/5 pt-8">
+                    <li>• Progressive Overload Matrix</li>
+                    <li>• Form Correction AI</li>
+                    <li>• 1-on-1 Spotting Support</li>
                 </ul>
-                <button
-                    class="w-full py-4 bg-black text-white font-bold rounded-lg hover:bg-zinc-800 transition shadow-lg">SELECT
-                    PLAN</button>
+            </div>
+            <div class="glass p-12 rounded-[60px] hover:border-red-600 transition-all duration-500 reveal-up group relative overflow-hidden">
+                <div class="absolute -bottom-10 -right-10 text-[10rem] opacity-[0.02] heading-font italic pointer-events-none">03</div>
+                <div class="w-16 h-16 bg-red-600/10 rounded-2xl flex items-center justify-center text-3xl mb-10 group-hover:bg-red-600 transition duration-500 group-hover:scale-110">🧊</div>
+                <h3 class="heading-font text-xl mb-6">Zen Recovery</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-8">Specialized protocols including cryotherapy, dry sauna, and guided mobility sessions for professional athletes.</p>
+                <ul class="text-[10px] font-black text-gray-400 space-y-3 uppercase tracking-widest border-t border-white/5 pt-8">
+                    <li>• Muscle Fiber Repair</li>
+                    <li>• Inflammation Reduction</li>
+                    <li>• Central Nervous System Cool</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="py-24 bg-zinc-950 px-6">
-        <h2 class="text-center text-5xl font-black italic mb-16 uppercase" data-aos="fade-up">Inside <span
-                class="text-orange-600">Rudrashk Gym</span></h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
-            <div class="aspect-square overflow-hidden rounded-xl" data-aos="flip-left">
-                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80"
-                    class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Gym Interior">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-xl" data-aos="flip-left" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1517838276518-2e027b81a41f?auto=format&fit=crop&w=600&q=80"
-                    class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Powerlifting Area">
-            </div>
-        </div>
-    </section>
-
-    <section id="bmi" class="py-24 bg-zinc-900 px-6">
-        <div class="max-w-4xl mx-auto bg-black p-12 rounded-3xl border border-orange-600/20 shadow-2xl"
-            data-aos="fade-right">
-            <h2 class="text-4xl font-black italic mb-8 uppercase text-center md:text-left text-neon">Calculate Your
-                <span class="text-orange-600">BMI</span>
-            </h2>
-            <p class="text-gray-400 mb-10 text-center md:text-left text-sm font-medium">Use this free tool to understand
-                your Body Mass Index and track your fitness progress.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <input type="number" id="weight" placeholder="Your Weight (kg)"
-                    class="bg-zinc-900 border border-zinc-700 p-5 rounded-lg focus:border-orange-600 outline-none placeholder:text-zinc-600 text-lg">
-                <input type="number" id="height" placeholder="Your Height (cm)"
-                    class="bg-zinc-900 border border-zinc-700 p-5 rounded-lg focus:border-orange-600 outline-none placeholder:text-zinc-600 text-lg">
-            </div>
-            <button onclick="calculateBMI()"
-                class="mt-10 bg-orange-600 w-full py-5 rounded-lg font-black text-xl uppercase italic hover:bg-white hover:text-orange-600 transition shadow-[0_0_20px_rgba(234,88,12,0.4)]">Check
-                My Results</button>
-            <div id="bmiResult"
-                class="mt-10 text-2xl font-bold text-center bg-zinc-950 p-6 rounded-lg hidden border border-orange-600/30">
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 bg-black px-6">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
-            <div class="lg:w-1/2" data-aos="fade-right">
-                <h2 class="text-5xl font-black italic mb-8 uppercase leading-tight text-neon">Location & <span
-                        class="text-orange-600">Contact</span></h2>
-                <p class="text-gray-400 mb-10 font-medium">Visit Rudrashk Gym Jabalpur today and start your
-                    transformation. Our expert team is ready to guide you.</p>
-                <div class="space-y-6 text-lg">
-                    <p>📍 Jabalpur, Madhya Pradesh</p>
-                    <p>📞 +91 XXXXXXXXXX</p>
-                    <p>✉️ info@rudrashkgym.in</p>
+    <section id="bmi" class="py-40 bg-zinc-950 px-8">
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+            <div class="lg:w-1/2 reveal-up">
+                <h2 class="heading-font text-5xl mb-8 leading-tight">BODY <br> <span class="gradient-text">INTELLIGENCE</span></h2>
+                <p class="text-gray-500 text-sm mb-12 leading-relaxed italic border-l-4 border-red-600 pl-6">
+                    "Jis tarah bina logic ke code error deta hai, waise hi bina data ke workout results nahi deta." - Rudraksh Vision
+                </p>
+                <div class="glass p-10 rounded-[40px] space-y-8">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <label class="text-[9px] font-black uppercase tracking-[4px] text-gray-600 mb-4 block">Weight (kg)</label>
+                            <input type="number" id="w" class="w-full bg-black/50 border-b border-white/10 p-4 text-2xl font-black outline-none focus:border-red-600" placeholder="70">
+                        </div>
+                        <div>
+                            <label class="text-[9px] font-black uppercase tracking-[4px] text-gray-600 mb-4 block">Height (cm)</label>
+                            <input type="number" id="h" class="w-full bg-black/50 border-b border-white/10 p-4 text-2xl font-black outline-none focus:border-red-600" placeholder="175">
+                        </div>
+                    </div>
+                    <button onclick="matrixScan()" class="w-full py-5 bg-white text-black font-black uppercase tracking-widest text-[11px] hover:bg-red-600 hover:text-white transition duration-500 rounded-full">Initialize System Scan</button>
                 </div>
             </div>
-            <div class="lg:w-1/2 w-full h-80 bg-zinc-900 rounded-2xl border-2 border-orange-600/30 flex items-center justify-center shadow-xl"
-                data-aos="zoom-in">
-                <p class="text-zinc-600 text-sm">[Google Map Placeholder]</p>
+            <div class="lg:w-1/2 text-center reveal-up">
+                <div class="relative inline-block">
+                    <div class="absolute inset-0 bg-red-600 blur-[100px] opacity-20"></div>
+                    <div id="m-val" class="heading-font text-[12vw] italic leading-none relative z-10">00</div>
+                    <div id="m-status" class="text-[12px] font-black uppercase tracking-[10px] text-gray-700 mt-4 relative z-10">Waiting for data...</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-zinc-950 py-16 text-center border-t border-zinc-800 px-6">
-        <h2 class="text-3xl font-black italic text-orange-600 mb-4 text-neon">RUDRASHK GYM</h2>
-        <p class="text-gray-500 italic max-w-lg mx-auto mb-12">Unchain the beast within you at Jabalpur's premier
-            fitness destination. Premium equipment, expert trainers.</p>
-        <p class="text-gray-700 text-xs mt-10 tracking-widest">© 2026 Rudrashk Gym. Hard Work Beats Talent.</p>
-    </footer>
+    <section id="pricing" class="py-40 px-8">
+        <div class="text-center mb-32">
+            <h2 class="heading-font text-5xl reveal-up italic">ACCESS <span class="outline-text">PROTOCOLS</span></h2>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
+            <div class="border border-white/5 p-12 rounded-[60px] flex flex-col justify-between reveal-up group hover:bg-zinc-950 transition-all duration-500">
+                <div>
+                    <h4 class="text-[10px] font-black uppercase tracking-[8px] text-gray-600 mb-8">Basic Protocol</h4>
+                    <div class="text-6xl font-black heading-font italic mb-10 leading-none">₹1499<span class="text-xs">/mo</span></div>
+                    <ul class="space-y-6 text-xs font-bold text-gray-500">
+                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Full Gym Floor Access</li>
+                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Mobile App Integration</li>
+                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Free Gym Bag</li>
+                        <li class="flex items-center gap-4 opacity-20"><span class="text-red-600">✘</span> Personal Trainer</li>
+                    </ul>
+                </div>
+                <button class="mt-20 w-full py-4 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-black transition">Initiate</button>
+            </div>
+            
+            <div class="bg-red-600 p-12 rounded-[60px] flex flex-col justify-between reveal-up transform lg:scale-110 shadow-2xl shadow-red-600/30 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 heading-font text-[15rem] opacity-[0.05] italic pointer-events-none uppercase">ELITE</div>
+                <div>
+                    <span class="bg-white text-red-600 px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">Most Efficient</span>
+                    <h4 class="text-[10px] font-black uppercase tracking-[8px] text-white/70 mt-8 mb-8">Elite Protocol</h4>
+                    <div class="text-6xl font-black heading-font italic mb-10 leading-none">₹2999<span class="text-xs">/mo</span></div>
+                    <ul class="space-y-6 text-xs font-bold text-white">
+                        <li class="flex items-center gap-4"><span>✔</span> Dedicated Personal Coach</li>
+                        <li class="flex items-center gap-4"><span>✔</span> Advanced Nutrition Matrix</li>
+                        <li class="flex items-center gap-4"><span>✔</span> Steam & Recovery Pass</li>
+                        <li class="flex items-center gap-4"><span>✔</span> Priority Session Booking</li>
+                    </ul>
+                </div>
+                <button class="mt-20 w-full py-4 bg-white text-black rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition">Acquire Access</button>
+            </div>
+            
+            <div class="border border-white/5 p-12 rounded-[60px] flex flex-col justify-between reveal-up group hover:bg-zinc-950 transition-all duration-500">
+                <div>
+                    <h4 class="text-[10px] font-black uppercase tracking-[8px] text-gray-600 mb-8">Legend Protocol</h4>
+                    <div class="text-6xl font-black heading-font italic mb-10 leading-none">₹19,999<span class="text-xs">/yr</span></div>
+                    <ul class="space-y-6 text-xs font-bold text-gray-500">
+                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> All Elite Features</li>
+                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Private VIP Locker Room</li>
+                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> 2 Guest Passes Monthly</li>
+                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Exclusive Merch Drop</li>
+                    </ul>
+                </div>
+                <button class="mt-20 w-full py-4 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-black transition">Commit Now</button>
+            </div>
+        </div>
+    </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <footer class="pt-40 pb-12 bg-black border-t border-white/5 px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32 relative z-10">
+            <div class="col-span-2">
+                <div class="heading-font text-5xl font-black italic italic mb-10">RUDRA<span class="text-red-600">KSH</span></div>
+                <p class="text-gray-500 text-sm max-w-sm mb-12 leading-loose">
+                    Jabalpur ka sabse advanced training center. Hum sirf gym nahi hain, hum ek lifestyle hain jo aapko peak performance par lekar jaata hai. Join the elite community today.
+                </p>
+                <div class="flex gap-8 text-[10px] font-black uppercase tracking-[4px]">
+                    <a href="#" class="hover:text-red-600 transition">Instagram</a>
+                    <a href="#" class="hover:text-red-600 transition">Whatsapp</a>
+                    <a href="#" class="hover:text-red-600 transition">Twitter</a>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-[9px] font-black uppercase tracking-[5px] text-gray-600 mb-10 italic">Internal Links</h5>
+                <ul class="space-y-6 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                    <li><a href="#" class="hover:text-white transition">Our Coaches</a></li>
+                    <li><a href="#" class="hover:text-white transition">Success Matrix</a></li>
+                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition">Elite Merch</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-[9px] font-black uppercase tracking-[5px] text-gray-600 mb-10 italic">Operational Hub</h5>
+                <p class="text-xs text-gray-500 leading-loose mb-6">
+                    Civil Lines / Wright Town Area,<br>
+                    Jabalpur, Madhya Pradesh 482001
+                </p>
+                <p class="text-xs font-black text-red-600 uppercase tracking-widest">Inquiry: +91 98XX XXX XX</p>
+            </div>
+        </div>
+        
+        <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-[8px] font-black text-gray-800 uppercase tracking-[10px]">
+                Built by Sahil Baghel // Design ID: ELITE-001
+            </div>
+            <div class="flex gap-4">
+                <div class="w-8 h-1 bg-white/10"></div>
+                <div class="w-20 h-1 bg-red-600/30"></div>
+                <div class="w-8 h-1 bg-white/10"></div>
+            </div>
+        </div>
+    </section>
+
     <script>
-        AOS.init({ duration: 1000, once: true });
+        gsap.registerPlugin(ScrollTrigger);
 
-        function calculateBMI() {
-            let weight = parseFloat(document.getElementById('weight').value);
-            let height = parseFloat(document.getElementById('height').value) / 100;
+        // Advanced Reveal Engine
+        document.querySelectorAll('.reveal-up').forEach((el) => {
+            gsap.fromTo(el, 
+                { y: 80, opacity: 0, scale: 0.95 },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1,
+                    duration: 1.5, 
+                    ease: "expo.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 95%",
+                        end: "bottom 5%",
+                        toggleActions: "play reverse play reverse"
+                    }
+                }
+            );
+        });
 
-            if (weight > 0 && height > 0) {
-                let bmi = (weight / (height * height)).toFixed(1);
-                let result = document.getElementById('bmiResult');
-                result.classList.remove('hidden');
-
-                let status, color;
-                if (bmi < 18.5) { status = "Underweight"; color = "text-blue-400"; }
-                else if (bmi < 25) { status = "Normal Weight"; color = "text-green-400"; }
-                else if (bmi < 30) { status = "Overweight"; color = "text-yellow-400"; }
-                else { status = "Obese"; color = "text-red-500"; }
-
-                result.innerHTML = `Your BMI: <span class="text-orange-600 font-black text-3xl">${bmi}</span><br><span class="text-lg font-medium">Condition: <strong class="${color} uppercase">${status}</strong></span>`;
-                AOS.refresh(); // Refresh AOS so the result element shows up properly
+        // Navbar Transformation
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if(window.scrollY > 100) {
+                nav.style.padding = '1.2rem 2rem';
+                nav.style.background = 'rgba(0,0,0,0.95)';
+                nav.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
             } else {
-                alert("Please enter valid weight and height.");
+                nav.style.padding = '1.5rem 2rem';
+                nav.style.background = 'transparent';
+                nav.style.borderBottom = '1px solid transparent';
+            }
+        });
+
+        // Matrix Scan Logic (Modern JS)
+        function matrixScan() {
+            const w = document.getElementById('w').value;
+            const h = document.getElementById('h').value / 100;
+            const target = document.getElementById('m-val');
+            const status = document.getElementById('m-status');
+
+            if(w && h) {
+                const bmi = (w / (h*h)).toFixed(1);
+                
+                // Animate Number with GSAP
+                gsap.to(target, {
+                    innerText: bmi,
+                    duration: 2.5,
+                    snap: { innerText: 0.1 },
+                    ease: "power4.out",
+                    onUpdate: function() {
+                        target.style.color = "white";
+                    }
+                });
+
+                // Analysis result
+                if(bmi < 18.5) { status.innerText = "Under-Conditioned"; status.style.color = "#ffcc00"; }
+                else if(bmi < 25) { status.innerText = "Optimal Performance"; status.style.color = "#00ff88"; }
+                else if(bmi < 30) { status.innerText = "Heavy Mass Frame"; status.style.color = "#ff6600"; }
+                else { status.innerText = "Immediate Protocol Needed"; status.style.color = "#ff004c"; }
+                
+                gsap.from(status, { opacity: 0, scale: 1.2, duration: 1 });
+            } else {
+                alert("Please input biometric data.");
             }
         }
+
+        // Hero Background Parallax
+        gsap.to("#hero-bg", {
+            y: 200,
+            scrollTrigger: {
+                trigger: "body",
+                scrub: true
+            }
+        });
     </script>
 </body>
-
 </html>
