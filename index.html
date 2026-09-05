@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rudraksh Gym | The Ultimate Fitness Empire</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,454 +12,419 @@
     
     <style>
         :root { --accent: #ff004c; --bg: #000000; --card: #0a0a0a; }
-        body { background-color: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: -2px; }
+        html, body { 
+            max-width: 100vw; 
+            overflow-x: hidden; 
+            background-color: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+        }
+        .heading-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: -1px; }
         
         /* Advanced Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 50px; }
 
         /* Smooth Glass Effects */
         .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
-        .glass-heavy { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(30px); border: 1px solid var(--accent); }
 
         /* Text Effects */
-        .outline-text { -webkit-text-stroke: 1px rgba(255,255,255,0.2); color: transparent; }
+        .outline-text { -webkit-text-stroke: 1px rgba(255,255,255,0.25); color: transparent; }
         .gradient-text { background: linear-gradient(to right, #ff004c, #ff7b00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Animation Classes */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
         /* Infinite Marquee */
-        .marquee { display: flex; overflow: hidden; user-select: none; gap: 2rem; border-y: 1px solid rgba(255,255,255,0.1); padding: 2rem 0; }
-        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 2rem; animation: scroll 30s linear infinite; }
+        .marquee { 
+            display: flex; 
+            overflow: hidden; 
+            user-select: none; 
+            gap: 1.5rem; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            padding: 1.25rem 0; 
+        }
+        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 1.5rem; animation: scroll 25s linear infinite; }
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
         /* Image Hover Effect */
-        .img-container { overflow: hidden; border-radius: 30px; position: relative; }
+        .img-container { overflow: hidden; border-radius: 24px; position: relative; }
         .img-container img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .img-container:hover img { transform: scale(1.1) rotate(2deg); }
+        .img-container:hover img { transform: scale(1.05); }
 
         /* Custom Shapes */
-        .shape-blob { position: absolute; width: 300px; height: 300px; background: var(--accent); opacity: 0.1; filter: blur(80px); border-radius: 50%; z-index: -1; }
+        .shape-blob { position: absolute; width: 220px; height: 220px; background: var(--accent); opacity: 0.12; filter: blur(70px); border-radius: 50%; z-index: -1; }
 
-        /* WhatsApp Floating Glow */
+        /* WhatsApp Pulse */
         .wa-pulse {
-            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
             animation: pulse-green 2s infinite;
         }
         @keyframes pulse-green {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
     </style>
 </head>
-<body>
+<body class="relative">
 
-    <!-- STICKY FLOATING WHATSAPP BUTTON (HIGH CONVERTING ON MOBILE) -->
+    <!-- FLOATING STICKY WHATSAPP BUTTON -->
     <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20have%20an%20inquiry%20regarding%20membership." 
        target="_blank" 
-       class="fixed bottom-6 right-6 z-[1100] bg-[#25D366] text-white p-4 rounded-full flex items-center justify-center wa-pulse hover:scale-110 transition-transform duration-300 shadow-2xl"
+       class="fixed bottom-5 right-5 z-[1100] bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full flex items-center justify-center wa-pulse hover:scale-110 transition-transform shadow-2xl"
        title="Chat on WhatsApp">
-        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
         </svg>
     </a>
 
-    <nav class="fixed w-full z-[1000] py-6 px-8 flex justify-between items-center transition-all duration-500" id="main-nav">
-        <div class="heading-font text-2xl font-black italic tracking-tighter">
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-[1000] py-4 px-4 sm:px-8 flex justify-between items-center transition-all duration-300" id="main-nav">
+        <div class="heading-font text-xl sm:text-2xl font-black italic tracking-tight">
             RUDRA<span class="text-red-600">KSH</span>
         </div>
-        <div class="hidden xl:flex items-center gap-10 text-[9px] font-black uppercase tracking-[5px] text-gray-500">
-            <a href="#home" class="nav-link hover:text-white transition">Base</a>
-            <a href="#about" class="nav-link hover:text-white transition">History</a>
-            <a href="#stats" class="nav-link hover:text-white transition">Data</a>
-            <a href="#programs" class="nav-link hover:text-white transition">Systems</a>
-            <a href="#bmi" class="nav-link hover:text-white transition">Matrix</a>
-            <a href="#pricing" class="nav-link hover:text-white transition">Pass</a>
+        <div class="hidden xl:flex items-center gap-8 text-[10px] font-black uppercase tracking-[4px] text-gray-400">
+            <a href="#home" class="hover:text-white transition">Base</a>
+            <a href="#about" class="hover:text-white transition">History</a>
+            <a href="#stats" class="hover:text-white transition">Data</a>
+            <a href="#programs" class="hover:text-white transition">Systems</a>
+            <a href="#bmi" class="hover:text-white transition">Matrix</a>
+            <a href="#pricing" class="hover:text-white transition">Pass</a>
         </div>
-        <div class="flex gap-4 items-center">
+        <div>
             <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20join%20the%201%25%20Elite%20Club." 
                target="_blank" 
-               class="bg-white text-black px-6 md:px-8 py-3 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-xl flex items-center gap-2">
-                <span>Join the 1%</span>
+               class="bg-white text-black px-4 sm:px-6 py-2.5 rounded-full font-black text-[9px] sm:text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition shadow-md">
+                Join the 1%
             </a>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="shape-blob top-20 left-20"></div>
-        <div class="shape-blob bottom-20 right-20 bg-orange-600"></div>
+    <section id="home" class="relative min-h-[90vh] md:h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
+        <div class="shape-blob top-10 left-4"></div>
+        <div class="shape-blob bottom-10 right-4 bg-orange-600"></div>
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070')] bg-cover bg-center opacity-20 grayscale" id="hero-bg"></div>
         
-        <div class="relative z-10 text-center px-4 max-w-6xl">
-            <h1 class="heading-font text-[12vw] md:text-[10vw] leading-[0.85] mb-8" data-aos="fade-up">
+        <div class="relative z-10 text-center w-full max-w-5xl mx-auto">
+            <h1 class="heading-font text-4xl sm:text-7xl md:text-[8vw] leading-[1] md:leading-[0.9] mb-6 tracking-normal">
                 BEYOND <br> <span class="outline-text">PHYSICAL</span>
             </h1>
-            <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
-                <p class="max-w-md text-gray-500 text-xs text-left border-l border-red-600 pl-6 leading-relaxed">
-                    Rudraksh Gym is Jabalpur's premier performance hub. We don't just train bodies; we forge mindsets. Join a community of elite performers.
+            
+            <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center justify-center max-w-2xl mx-auto">
+                <p class="text-gray-400 text-xs sm:text-sm text-center md:text-left border-b md:border-b-0 md:border-l border-red-600 pb-4 md:pb-0 md:pl-6 leading-relaxed">
+                    Rudraksh Gym is Jabalpur's premier performance hub. We don't just train bodies; we forge mindsets.
                 </p>
                 
-                <!-- PRIMARY HERO CTA BUTTON -->
-                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                <div class="flex flex-col w-full sm:w-auto gap-3 items-center">
                     <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20claim%20my%201-Day%20Free%20Trial%20Pass." 
                        target="_blank" 
-                       class="bg-red-600 text-white px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all flex items-center gap-3 shadow-lg shadow-red-600/40">
+                       class="w-full sm:w-auto bg-red-600 text-white px-7 py-3.5 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition flex items-center justify-center gap-2 shadow-lg shadow-red-600/30">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                         </svg>
-                        <span>Claim Free Pass</span>
+                        <span>Free Trial on WhatsApp</span>
                     </a>
-                    <div class="flex gap-3">
-                        <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center animate-bounce">↓</div>
-                        <span class="text-[9px] font-black uppercase tracking-[3px] text-gray-400 self-center">Explore</span>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- MARQUEE -->
     <div class="marquee bg-zinc-950">
         <div class="marquee-content">
-            <span class="heading-font text-6xl opacity-10">NO EXCUSES •</span>
-            <span class="heading-font text-6xl text-red-600 italic">LIMITLESS •</span>
-            <span class="heading-font text-6xl opacity-10">FORGE GLORY •</span>
-            <span class="heading-font text-6xl outline-text">RUDRAKSH GYM •</span>
-            <span class="heading-font text-6xl opacity-10">STAY HUNGRY •</span>
+            <span class="heading-font text-3xl sm:text-5xl opacity-20">NO EXCUSES •</span>
+            <span class="heading-font text-3xl sm:text-5xl text-red-600 italic">LIMITLESS •</span>
+            <span class="heading-font text-3xl sm:text-5xl outline-text">RUDRAKSH GYM •</span>
+            <span class="heading-font text-3xl sm:text-5xl opacity-20">STAY HUNGRY •</span>
         </div>
         <div class="marquee-content" aria-hidden="true">
-            <span class="heading-font text-6xl opacity-10">NO EXCUSES •</span>
-            <span class="heading-font text-6xl text-red-600 italic">LIMITLESS •</span>
-            <span class="heading-font text-6xl opacity-10">FORGE GLORY •</span>
-            <span class="heading-font text-6xl outline-text">RUDRAKSH GYM •</span>
-            <span class="heading-font text-6xl opacity-10">STAY HUNGRY •</span>
+            <span class="heading-font text-3xl sm:text-5xl opacity-20">NO EXCUSES •</span>
+            <span class="heading-font text-3xl sm:text-5xl text-red-600 italic">LIMITLESS •</span>
+            <span class="heading-font text-3xl sm:text-5xl outline-text">RUDRAKSH GYM •</span>
+            <span class="heading-font text-3xl sm:text-5xl opacity-20">STAY HUNGRY •</span>
         </div>
     </div>
 
-    <section id="about" class="py-40 px-8">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 md:py-32 px-4 sm:px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div class="img-container shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=2069" alt="Elite Training" class="w-full grayscale hover:grayscale-0 transition duration-1000">
-                <div class="absolute bottom-10 left-10 glass p-6 rounded-2xl">
-                    <h4 class="heading-font text-2xl italic font-black">EST. 2026</h4>
-                    <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-2">Born in Jabalpur</p>
+                <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=2069" alt="Elite Training" class="w-full h-[320px] sm:h-[450px] object-cover grayscale hover:grayscale-0 transition duration-700">
+                <div class="absolute bottom-4 left-4 glass p-4 rounded-xl">
+                    <h4 class="heading-font text-xl italic font-black">EST. 2026</h4>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-1">Born in Jabalpur</p>
                 </div>
             </div>
             <div>
-                <h2 class="heading-font text-5xl mb-10 leading-tight reveal-up">THE <span class="gradient-text">PHILOSOPHY</span> OF STRENGTH</h2>
-                <p class="text-gray-400 text-sm leading-[2] mb-12 reveal-up">
-                    Hamara maqsad sirf muscle banana nahi hai. Hum believe karte hain ki jab aapka sharir mazboot hota hai, toh aapka dimaag aur hausla bhi badhta hai. Rudraksh Gym ek aisi jagah hai jahan technology aur raw power ka milan hota hai. 
-                    <br><br>
-                    C++ ki coding ki tarah, hum har ek workout ko optimize karte hain taaki aapko "Peak Performance" mil sake. Bina kisi compromise ke.
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mb-6 leading-tight reveal-up">THE <span class="gradient-text">PHILOSOPHY</span> OF STRENGTH</h2>
+                <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-8 reveal-up">
+                    Hamara maqsad sirf muscle banana nahi hai. Hum believe karte hain ki jab aapka sharir mazboot hota hai, toh aapka dimaag aur hausla bhi badhta hai. Rudraksh Gym Jabalpur mein modern training science aur discipline ka hub hai.
                 </p>
-                <div class="grid grid-cols-2 gap-8 reveal-up">
+                <div class="grid grid-cols-2 gap-6 reveal-up border-t border-white/10 pt-6">
                     <div>
-                        <div class="text-4xl font-black mb-2">99%</div>
-                        <p class="text-[10px] uppercase font-black text-gray-600 tracking-widest">Success Rate</p>
+                        <div class="text-3xl sm:text-4xl font-black text-white">99%</div>
+                        <p class="text-[9px] uppercase font-bold text-gray-500 tracking-widest mt-1">Success Rate</p>
                     </div>
                     <div>
-                        <div class="text-4xl font-black mb-2">24/7</div>
-                        <p class="text-[10px] uppercase font-black text-gray-600 tracking-widest">Elite Access</p>
+                        <div class="text-3xl sm:text-4xl font-black text-white">24/7</div>
+                        <p class="text-[9px] uppercase font-bold text-gray-500 tracking-widest mt-1">Elite Access</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="stats" class="bg-zinc-950 py-32">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+    <!-- STATS -->
+    <section id="stats" class="bg-zinc-950 py-16 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div class="reveal-up">
-                <div class="text-6xl font-black italic text-red-600 mb-2">500+</div>
-                <div class="text-[10px] font-black uppercase tracking-[5px] text-gray-500">Elite Warriors</div>
+                <div class="text-4xl sm:text-5xl font-black italic text-red-600">500+</div>
+                <div class="text-[9px] font-bold uppercase tracking-wider text-gray-500 mt-1">Elite Members</div>
             </div>
-            <div class="reveal-up" style="transition-delay: 0.1s;">
-                <div class="text-6xl font-black italic text-white mb-2">20+</div>
-                <div class="text-[10px] font-black uppercase tracking-[5px] text-gray-500">Master Coaches</div>
+            <div class="reveal-up">
+                <div class="text-4xl sm:text-5xl font-black italic text-white">20+</div>
+                <div class="text-[9px] font-bold uppercase tracking-wider text-gray-500 mt-1">Master Coaches</div>
             </div>
-            <div class="reveal-up" style="transition-delay: 0.2s;">
-                <div class="text-6xl font-black italic text-red-600 mb-2">100+</div>
-                <div class="text-[10px] font-black uppercase tracking-[5px] text-gray-500">Modern Units</div>
+            <div class="reveal-up">
+                <div class="text-4xl sm:text-5xl font-black italic text-red-600">100+</div>
+                <div class="text-[9px] font-bold uppercase tracking-wider text-gray-500 mt-1">Equipments</div>
             </div>
-            <div class="reveal-up" style="transition-delay: 0.3s;">
-                <div class="text-6xl font-black italic text-white mb-2">5★</div>
-                <div class="text-[10px] font-black uppercase tracking-[5px] text-gray-500">User Rating</div>
+            <div class="reveal-up">
+                <div class="text-4xl sm:text-5xl font-black italic text-white">4.9★</div>
+                <div class="text-[9px] font-bold uppercase tracking-wider text-gray-500 mt-1">User Rating</div>
             </div>
         </div>
     </section>
 
-    <section id="programs" class="py-40 px-8 bg-black">
-        <div class="text-center mb-32">
-            <h2 class="heading-font text-5xl md:text-7xl reveal-up italic">OPERATIONAL <span class="outline-text">SYSTEMS</span></h2>
-            <p class="text-gray-500 text-xs mt-6 tracking-[8px] uppercase font-black reveal-up">Select your transformation protocol</p>
+    <!-- PROGRAMS -->
+    <section id="programs" class="py-20 md:py-32 px-4 sm:px-8 bg-black">
+        <div class="text-center mb-16">
+            <h2 class="heading-font text-3xl sm:text-5xl reveal-up italic">OPERATIONAL <span class="outline-text">SYSTEMS</span></h2>
+            <p class="text-gray-500 text-[10px] mt-3 tracking-[4px] uppercase font-bold reveal-up">Select your transformation protocol</p>
         </div>
         
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
-            <div class="glass p-12 rounded-[60px] hover:border-red-600 transition-all duration-500 reveal-up group relative overflow-hidden">
-                <div class="absolute -bottom-10 -right-10 text-[10rem] opacity-[0.02] heading-font italic pointer-events-none">01</div>
-                <div class="w-16 h-16 bg-red-600/10 rounded-2xl flex items-center justify-center text-3xl mb-10 group-hover:bg-red-600 transition duration-500 group-hover:scale-110">⚡</div>
-                <h3 class="heading-font text-xl mb-6">Neural HIIT</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-8">High intensity training combined with cognitive drills to improve reaction time and fat metabolism simultaneously.</p>
-                <ul class="text-[10px] font-black text-gray-400 space-y-3 uppercase tracking-widest border-t border-white/5 pt-8">
-                    <li>• Heart Rate Monitoring</li>
-                    <li>• Dynamic Reflex Training</li>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 sm:gap-8">
+            <div class="glass p-6 sm:p-10 rounded-3xl border border-white/5 reveal-up">
+                <div class="w-12 h-12 bg-red-600/10 rounded-xl flex items-center justify-center text-2xl mb-6">⚡</div>
+                <h3 class="heading-font text-lg mb-3">Neural HIIT</h3>
+                <p class="text-gray-500 text-xs leading-relaxed mb-6">High intensity training combined with drills to improve reaction time and fat metabolism.</p>
+                <ul class="text-[10px] font-bold text-gray-400 space-y-2 uppercase tracking-wider border-t border-white/5 pt-4">
+                    <li>• Dynamic Reflex Drills</li>
                     <li>• Rapid Fat Oxidation</li>
                 </ul>
             </div>
-            <div class="bg-white text-black p-12 rounded-[60px] reveal-up group relative overflow-hidden shadow-2xl transform lg:scale-110 z-10">
-                <div class="absolute -bottom-10 -right-10 text-[10rem] opacity-[0.05] heading-font italic pointer-events-none">02</div>
-                <div class="w-16 h-16 bg-black rounded-2xl flex items-center justify-center text-3xl mb-10 text-white">💪</div>
-                <h3 class="heading-font text-xl mb-6">Titan Strength</h3>
-                <p class="text-gray-700 text-sm leading-relaxed mb-8">Olympic lifting, powerlifting and classical bodybuilding merged into one high-performance protocol.</p>
-                <ul class="text-[10px] font-black text-gray-500 space-y-3 uppercase tracking-widest border-t border-black/5 pt-8">
+            <div class="bg-zinc-900 text-white p-6 sm:p-10 rounded-3xl border border-red-600/30 reveal-up">
+                <div class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center text-2xl mb-6">💪</div>
+                <h3 class="heading-font text-lg mb-3 text-red-500">Titan Strength</h3>
+                <p class="text-gray-400 text-xs leading-relaxed mb-6">Olympic lifting, powerlifting and classical bodybuilding merged into one system.</p>
+                <ul class="text-[10px] font-bold text-gray-400 space-y-2 uppercase tracking-wider border-t border-white/10 pt-4">
                     <li>• Progressive Overload Matrix</li>
-                    <li>• Form Correction AI</li>
                     <li>• 1-on-1 Spotting Support</li>
                 </ul>
             </div>
-            <div class="glass p-12 rounded-[60px] hover:border-red-600 transition-all duration-500 reveal-up group relative overflow-hidden">
-                <div class="absolute -bottom-10 -right-10 text-[10rem] opacity-[0.02] heading-font italic pointer-events-none">03</div>
-                <div class="w-16 h-16 bg-red-600/10 rounded-2xl flex items-center justify-center text-3xl mb-10 group-hover:bg-red-600 transition duration-500 group-hover:scale-110">🧊</div>
-                <h3 class="heading-font text-xl mb-6">Zen Recovery</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-8">Specialized protocols including cryotherapy, dry sauna, and guided mobility sessions for professional athletes.</p>
-                <ul class="text-[10px] font-black text-gray-400 space-y-3 uppercase tracking-widest border-t border-white/5 pt-8">
+            <div class="glass p-6 sm:p-10 rounded-3xl border border-white/5 reveal-up">
+                <div class="w-12 h-12 bg-red-600/10 rounded-xl flex items-center justify-center text-2xl mb-6">🧊</div>
+                <h3 class="heading-font text-lg mb-3">Zen Recovery</h3>
+                <p class="text-gray-500 text-xs leading-relaxed mb-6">Protocols including cryotherapy, dry sauna, and mobility sessions for athletes.</p>
+                <ul class="text-[10px] font-bold text-gray-400 space-y-2 uppercase tracking-wider border-t border-white/5 pt-4">
                     <li>• Muscle Fiber Repair</li>
                     <li>• Inflammation Reduction</li>
-                    <li>• Central Nervous System Cool</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- BMI / MATRIX SECTION -->
-    <section id="bmi" class="py-40 bg-zinc-950 px-8">
-        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-            <div class="lg:w-1/2 reveal-up">
-                <h2 class="heading-font text-5xl mb-8 leading-tight">BODY <br> <span class="gradient-text">INTELLIGENCE</span></h2>
-                <p class="text-gray-500 text-sm mb-12 leading-relaxed italic border-l-4 border-red-600 pl-6">
-                    "Jis tarah bina logic ke code error deta hai, waise hi bina data ke workout results nahi deta." - Rudraksh Vision
+    <!-- BMI SECTION -->
+    <section id="bmi" class="py-20 md:py-32 bg-zinc-950 px-4 sm:px-8">
+        <div class="max-w-5xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
+            <div class="w-full lg:w-1/2 reveal-up">
+                <h2 class="heading-font text-3xl sm:text-4xl mb-4 leading-tight">BODY <br><span class="gradient-text">INTELLIGENCE</span></h2>
+                <p class="text-gray-500 text-xs mb-8 border-l-2 border-red-600 pl-4">
+                    Calculate your BMI in seconds to match your exact protocol.
                 </p>
-                <div class="glass p-10 rounded-[40px] space-y-8">
-                    <div class="grid grid-cols-2 gap-8">
+                <div class="glass p-6 sm:p-8 rounded-3xl space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="text-[9px] font-black uppercase tracking-[4px] text-gray-600 mb-4 block">Weight (kg)</label>
-                            <input type="number" id="w" class="w-full bg-black/50 border-b border-white/10 p-4 text-2xl font-black outline-none focus:border-red-600" placeholder="70">
+                            <label class="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Weight (kg)</label>
+                            <input type="number" id="w" class="w-full bg-black/60 border border-white/10 rounded-xl p-3 text-lg font-black outline-none focus:border-red-600" placeholder="70">
                         </div>
                         <div>
-                            <label class="text-[9px] font-black uppercase tracking-[4px] text-gray-600 mb-4 block">Height (cm)</label>
-                            <input type="number" id="h" class="w-full bg-black/50 border-b border-white/10 p-4 text-2xl font-black outline-none focus:border-red-600" placeholder="175">
+                            <label class="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-2 block">Height (cm)</label>
+                            <input type="number" id="h" class="w-full bg-black/60 border border-white/10 rounded-xl p-3 text-lg font-black outline-none focus:border-red-600" placeholder="175">
                         </div>
                     </div>
-                    <button onclick="matrixScan()" class="w-full py-5 bg-white text-black font-black uppercase tracking-widest text-[11px] hover:bg-red-600 hover:text-white transition duration-500 rounded-full">Initialize System Scan</button>
+                    <button onclick="matrixScan()" class="w-full py-4 bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-red-600 hover:text-white transition rounded-full">Calculate Score</button>
                 </div>
             </div>
-            <div class="lg:w-1/2 text-center reveal-up">
-                <div class="relative inline-block">
-                    <div class="absolute inset-0 bg-red-600 blur-[100px] opacity-20"></div>
-                    <div id="m-val" class="heading-font text-[12vw] italic leading-none relative z-10">00</div>
-                    <div id="m-status" class="text-[12px] font-black uppercase tracking-[10px] text-gray-700 mt-4 relative z-10">Waiting for data...</div>
+            
+            <div class="w-full lg:w-1/2 text-center reveal-up">
+                <div class="glass p-8 rounded-3xl border border-white/5 relative overflow-hidden">
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">BMI Score</div>
+                    <div id="m-val" class="heading-font text-6xl sm:text-7xl italic font-black text-white">00</div>
+                    <div id="m-status" class="text-[11px] font-black uppercase tracking-widest text-gray-400 mt-3">Awaiting Inputs</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING SECTION (CONNECTED WITH WHATSAPP) -->
-    <section id="pricing" class="py-40 px-8">
-        <div class="text-center mb-32">
-            <h2 class="heading-font text-5xl reveal-up italic">ACCESS <span class="outline-text">PROTOCOLS</span></h2>
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="py-20 md:py-32 px-4 sm:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="heading-font text-3xl sm:text-5xl reveal-up italic">ACCESS <span class="outline-text">PASSES</span></h2>
         </div>
         
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
-            <!-- Basic Plan -->
-            <div class="border border-white/5 p-12 rounded-[60px] flex flex-col justify-between reveal-up group hover:bg-zinc-950 transition-all duration-500">
+        <div class="grid md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+            <!-- Basic -->
+            <div class="border border-white/10 p-6 sm:p-8 rounded-3xl flex flex-col justify-between reveal-up bg-zinc-950/40">
                 <div>
-                    <h4 class="text-[10px] font-black uppercase tracking-[8px] text-gray-600 mb-8">Basic Protocol</h4>
-                    <div class="text-6xl font-black heading-font italic mb-10 leading-none">₹1499<span class="text-xs">/mo</span></div>
-                    <ul class="space-y-6 text-xs font-bold text-gray-500">
-                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Full Gym Floor Access</li>
-                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Mobile App Integration</li>
-                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Free Gym Bag</li>
-                        <li class="flex items-center gap-4 opacity-20"><span class="text-red-600">✘</span> Personal Trainer</li>
+                    <h4 class="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-4">Basic Pass</h4>
+                    <div class="text-4xl font-black heading-font italic mb-6">₹1,499<span class="text-xs font-normal text-gray-500">/mo</span></div>
+                    <ul class="space-y-3 text-xs text-gray-400 mb-8">
+                        <li>✔ Full Gym Floor Access</li>
+                        <li>✔ Locker Room Access</li>
+                        <li>✔ Free Fitness Assessment</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20enroll%20in%20the%20Basic%20Protocol%20(Rs.1499%2Fmo)." 
+                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20the%20Basic%20Pass%20(Rs.1499)." 
                    target="_blank" 
-                   class="mt-20 w-full py-4 text-center border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-black transition block">
-                   Initiate via WhatsApp
+                   class="w-full py-3.5 text-center border border-white/20 rounded-full text-[9px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition block">
+                   Select Basic
                 </a>
             </div>
             
-            <!-- Elite Plan -->
-            <div class="bg-red-600 p-12 rounded-[60px] flex flex-col justify-between reveal-up transform lg:scale-110 shadow-2xl shadow-red-600/30 relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 heading-font text-[15rem] opacity-[0.05] italic pointer-events-none uppercase">ELITE</div>
+            <!-- Elite -->
+            <div class="bg-red-600 p-6 sm:p-8 rounded-3xl flex flex-col justify-between reveal-up shadow-xl shadow-red-600/20">
                 <div>
-                    <span class="bg-white text-red-600 px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">Most Efficient</span>
-                    <h4 class="text-[10px] font-black uppercase tracking-[8px] text-white/70 mt-8 mb-8">Elite Protocol</h4>
-                    <div class="text-6xl font-black heading-font italic mb-10 leading-none">₹2999<span class="text-xs">/mo</span></div>
-                    <ul class="space-y-6 text-xs font-bold text-white">
-                        <li class="flex items-center gap-4"><span>✔</span> Dedicated Personal Coach</li>
-                        <li class="flex items-center gap-4"><span>✔</span> Advanced Nutrition Matrix</li>
-                        <li class="flex items-center gap-4"><span>✔</span> Steam & Recovery Pass</li>
-                        <li class="flex items-center gap-4"><span>✔</span> Priority Session Booking</li>
+                    <span class="bg-white text-red-600 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-wider inline-block mb-4">Popular</span>
+                    <h4 class="text-[9px] font-bold uppercase tracking-widest text-white/80 mb-2">Elite Pass</h4>
+                    <div class="text-4xl font-black heading-font italic mb-6">₹2,999<span class="text-xs font-normal text-white/80">/mo</span></div>
+                    <ul class="space-y-3 text-xs text-white mb-8">
+                        <li>✔ Dedicated Personal Trainer</li>
+                        <li>✔ Customized Diet Matrix</li>
+                        <li>✔ Steam & Recovery Pass</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20enroll%20in%20the%20Elite%20Protocol%20(Rs.2999%2Fmo)." 
+                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20the%20Elite%20Pass%20(Rs.2999)." 
                    target="_blank" 
-                   class="mt-20 w-full py-4 text-center bg-white text-black rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition block shadow-lg">
-                   Acquire Access
+                   class="w-full py-3.5 text-center bg-white text-black rounded-full font-bold text-[9px] uppercase tracking-widest hover:bg-black hover:text-white transition block">
+                   Acquire Elite
                 </a>
             </div>
             
-            <!-- Legend Plan -->
-            <div class="border border-white/5 p-12 rounded-[60px] flex flex-col justify-between reveal-up group hover:bg-zinc-950 transition-all duration-500">
+            <!-- Legend -->
+            <div class="border border-white/10 p-6 sm:p-8 rounded-3xl flex flex-col justify-between reveal-up bg-zinc-950/40">
                 <div>
-                    <h4 class="text-[10px] font-black uppercase tracking-[8px] text-gray-600 mb-8">Legend Protocol</h4>
-                    <div class="text-6xl font-black heading-font italic mb-10 leading-none">₹19,999<span class="text-xs">/yr</span></div>
-                    <ul class="space-y-6 text-xs font-bold text-gray-500">
-                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> All Elite Features</li>
-                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Private VIP Locker Room</li>
-                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> 2 Guest Passes Monthly</li>
-                        <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Exclusive Merch Drop</li>
+                    <h4 class="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-4">Annual Pass</h4>
+                    <div class="text-4xl font-black heading-font italic mb-6">₹19,999<span class="text-xs font-normal text-gray-500">/yr</span></div>
+                    <ul class="space-y-3 text-xs text-gray-400 mb-8">
+                        <li>✔ All Elite Features Included</li>
+                        <li>✔ 2 Free Guest Passes / Month</li>
+                        <li>✔ Official Gym Kit & Merch</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20commit%20to%20the%20Legend%20Protocol%20(Rs.19999%2Fyr)." 
+                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20the%20Annual%20Pass%20(Rs.19999)." 
                    target="_blank" 
-                   class="mt-20 w-full py-4 text-center border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-black transition block">
-                   Commit Now
+                   class="w-full py-3.5 text-center border border-white/20 rounded-full text-[9px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition block">
+                   Commit Annual
                 </a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="pt-40 pb-12 bg-black border-t border-white/5 px-8 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32 relative z-10">
-            <div class="col-span-2">
-                <div class="heading-font text-5xl font-black italic mb-10">RUDRA<span class="text-red-600">KSH</span></div>
-                <p class="text-gray-500 text-sm max-w-sm mb-12 leading-loose">
-                    Jabalpur ka sabse advanced training center. Hum sirf gym nahi hain, hum ek lifestyle hain jo aapko peak performance par lekar jaata hai. Join the elite community today.
-                </p>
-                <div class="flex gap-8 text-[10px] font-black uppercase tracking-[4px]">
-                    <a href="#" class="hover:text-red-600 transition">Instagram</a>
-                    <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20am%20reaching%20out%20from%20your%20website." target="_blank" class="text-[#25D366] hover:underline transition">WhatsApp</a>
-                    <a href="#" class="hover:text-red-600 transition">Twitter</a>
-                </div>
-            </div>
+    <footer class="pt-20 pb-10 bg-black border-t border-white/10 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
             <div>
-                <h5 class="text-[9px] font-black uppercase tracking-[5px] text-gray-600 mb-10 italic">Internal Links</h5>
-                <ul class="space-y-6 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                    <li><a href="#about" class="hover:text-white transition">History</a></li>
-                    <li><a href="#programs" class="hover:text-white transition">Systems</a></li>
-                    <li><a href="#bmi" class="hover:text-white transition">Matrix Scan</a></li>
-                    <li><a href="#pricing" class="hover:text-white transition">Access Pass</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5 class="text-[9px] font-black uppercase tracking-[5px] text-gray-600 mb-10 italic">Operational Hub</h5>
-                <p class="text-xs text-gray-500 leading-loose mb-6">
-                    Civil Lines / Wright Town Area,<br>
-                    Jabalpur, Madhya Pradesh 482001
+                <div class="heading-font text-2xl font-black italic mb-4">RUDRA<span class="text-red-600">KSH</span></div>
+                <p class="text-gray-500 text-xs leading-relaxed max-w-sm mb-6">
+                    Jabalpur's premium fitness ecosystem built for performance and strength.
                 </p>
-                <a href="https://wa.me/919876543210" target="_blank" class="text-xs font-black text-red-600 uppercase tracking-widest hover:underline block">
-                    Inquiry: +91 98XX XXX XX
+                <a href="https://wa.me/919876543210" target="_blank" class="text-xs font-bold text-[#25D366] hover:underline">
+                    WhatsApp: +91 98XX XXX XX
                 </a>
             </div>
+            <div>
+                <h5 class="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-4">Location</h5>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Civil Lines / Wright Town,<br>
+                    Jabalpur, Madhya Pradesh 482001
+                </p>
+            </div>
+            <div>
+                <h5 class="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-4">Hours</h5>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Mon - Sat: 5:00 AM - 10:30 PM<br>
+                    Sunday: 7:00 AM - 1:00 PM
+                </p>
+            </div>
         </div>
-        
-        <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-[8px] font-black text-gray-800 uppercase tracking-[10px]">
-                Built by Sahil Baghel // Design ID: ELITE-001
-            </div>
-            <div class="flex gap-4">
-                <div class="w-8 h-1 bg-white/10"></div>
-                <div class="w-20 h-1 bg-red-600/30"></div>
-                <div class="w-8 h-1 bg-white/10"></div>
-            </div>
+        <div class="border-t border-white/5 pt-8 text-center text-[9px] text-gray-600 font-bold uppercase tracking-widest">
+            Built by Sahil Baghel
         </div>
     </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Advanced Reveal Engine
+        // Safe Mobile Reveal Engine (Zero Horizontal Blowup)
         document.querySelectorAll('.reveal-up').forEach((el) => {
             gsap.fromTo(el, 
-                { y: 80, opacity: 0, scale: 0.95 },
+                { y: 40, opacity: 0 },
                 { 
                     y: 0, 
                     opacity: 1, 
-                    scale: 1,
-                    duration: 1.5, 
-                    ease: "expo.out",
+                    duration: 1.1, 
+                    ease: "power2.out",
                     scrollTrigger: {
                         trigger: el,
-                        start: "top 95%",
-                        end: "bottom 5%",
-                        toggleActions: "play reverse play reverse"
+                        start: "top 92%",
+                        toggleActions: "play none none none"
                     }
                 }
             );
         });
 
-        // Navbar Transformation
+        // Navbar Scroll Styling
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('main-nav');
-            if(window.scrollY > 100) {
-                nav.style.padding = '1.2rem 2rem';
+            if(window.scrollY > 50) {
                 nav.style.background = 'rgba(0,0,0,0.95)';
                 nav.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
             } else {
-                nav.style.padding = '1.5rem 2rem';
                 nav.style.background = 'transparent';
                 nav.style.borderBottom = '1px solid transparent';
             }
         });
 
-        // Matrix Scan Logic (Modern JS)
+        // Matrix / BMI Calculation Logic
         function matrixScan() {
-            const w = document.getElementById('w').value;
-            const h = document.getElementById('h').value / 100;
+            const w = parseFloat(document.getElementById('w').value);
+            const h = parseFloat(document.getElementById('h').value) / 100;
             const target = document.getElementById('m-val');
             const status = document.getElementById('m-status');
 
-            if(w && h) {
-                const bmi = (w / (h*h)).toFixed(1);
-                
-                // Animate Number with GSAP
-                gsap.to(target, {
-                    innerText: bmi,
-                    duration: 2.5,
-                    snap: { innerText: 0.1 },
-                    ease: "power4.out",
-                    onUpdate: function() {
-                        target.style.color = "white";
-                    }
-                });
+            if(w > 0 && h > 0) {
+                const bmi = (w / (h * h)).toFixed(1);
+                target.innerText = bmi;
 
-                // Analysis result
-                if(bmi < 18.5) { status.innerText = "Under-Conditioned"; status.style.color = "#ffcc00"; }
-                else if(bmi < 25) { status.innerText = "Optimal Performance"; status.style.color = "#00ff88"; }
-                else if(bmi < 30) { status.innerText = "Heavy Mass Frame"; status.style.color = "#ff6600"; }
-                else { status.innerText = "Immediate Protocol Needed"; status.style.color = "#ff004c"; }
-                
-                gsap.from(status, { opacity: 0, scale: 1.2, duration: 1 });
+                if(bmi < 18.5) { 
+                    status.innerText = "Under-Conditioned"; 
+                    status.style.color = "#ffcc00"; 
+                } else if(bmi < 25) { 
+                    status.innerText = "Optimal Performance"; 
+                    status.style.color = "#00ff88"; 
+                } else if(bmi < 30) { 
+                    status.innerText = "Heavy Mass Frame"; 
+                    status.style.color = "#ff6600"; 
+                } else { 
+                    status.innerText = "Immediate Protocol Needed"; 
+                    status.style.color = "#ff004c"; 
+                }
             } else {
-                alert("Please input biometric data.");
+                alert("Please input valid Weight and Height.");
             }
         }
-
-        // Hero Background Parallax
-        gsap.to("#hero-bg", {
-            y: 200,
-            scrollTrigger: {
-                trigger: "body",
-                scrub: true
-            }
-        });
     </script>
 </body>
 </html>
