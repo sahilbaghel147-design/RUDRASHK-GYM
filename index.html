@@ -44,9 +44,30 @@
 
         /* Custom Shapes */
         .shape-blob { position: absolute; width: 300px; height: 300px; background: var(--accent); opacity: 0.1; filter: blur(80px); border-radius: 50%; z-index: -1; }
+
+        /* WhatsApp Floating Glow */
+        .wa-pulse {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
     </style>
 </head>
 <body>
+
+    <!-- STICKY FLOATING WHATSAPP BUTTON (HIGH CONVERTING ON MOBILE) -->
+    <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20have%20an%20inquiry%20regarding%20membership." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-[1100] bg-[#25D366] text-white p-4 rounded-full flex items-center justify-center wa-pulse hover:scale-110 transition-transform duration-300 shadow-2xl"
+       title="Chat on WhatsApp">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
 
     <nav class="fixed w-full z-[1000] py-6 px-8 flex justify-between items-center transition-all duration-500" id="main-nav">
         <div class="heading-font text-2xl font-black italic tracking-tighter">
@@ -57,16 +78,19 @@
             <a href="#about" class="nav-link hover:text-white transition">History</a>
             <a href="#stats" class="nav-link hover:text-white transition">Data</a>
             <a href="#programs" class="nav-link hover:text-white transition">Systems</a>
-            <a href="#trainers" class="nav-link hover:text-white transition">Elite</a>
             <a href="#bmi" class="nav-link hover:text-white transition">Matrix</a>
             <a href="#pricing" class="nav-link hover:text-white transition">Pass</a>
         </div>
-        <div class="flex gap-4">
-            <button class="hidden md:block text-[9px] font-black uppercase tracking-widest text-gray-400 hover:text-white border-r border-white/10 pr-4">Login</button>
-            <button class="bg-white text-black px-8 py-3 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-xl">Join the 1%</button>
+        <div class="flex gap-4 items-center">
+            <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20join%20the%201%25%20Elite%20Club." 
+               target="_blank" 
+               class="bg-white text-black px-6 md:px-8 py-3 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-xl flex items-center gap-2">
+                <span>Join the 1%</span>
+            </a>
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="shape-blob top-20 left-20"></div>
         <div class="shape-blob bottom-20 right-20 bg-orange-600"></div>
@@ -80,9 +104,21 @@
                 <p class="max-w-md text-gray-500 text-xs text-left border-l border-red-600 pl-6 leading-relaxed">
                     Rudraksh Gym is Jabalpur's premier performance hub. We don't just train bodies; we forge mindsets. Join a community of elite performers.
                 </p>
-                <div class="flex gap-4">
-                    <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center animate-bounce">↓</div>
-                    <span class="text-[9px] font-black uppercase tracking-[4px] text-gray-400 self-center">Scroll to Evolve</span>
+                
+                <!-- PRIMARY HERO CTA BUTTON -->
+                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                    <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20claim%20my%201-Day%20Free%20Trial%20Pass." 
+                       target="_blank" 
+                       class="bg-red-600 text-white px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all flex items-center gap-3 shadow-lg shadow-red-600/40">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                        <span>Claim Free Pass</span>
+                    </a>
+                    <div class="flex gap-3">
+                        <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center animate-bounce">↓</div>
+                        <span class="text-[9px] font-black uppercase tracking-[3px] text-gray-400 self-center">Explore</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -199,6 +235,7 @@
         </div>
     </section>
 
+    <!-- BMI / MATRIX SECTION -->
     <section id="bmi" class="py-40 bg-zinc-950 px-8">
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
             <div class="lg:w-1/2 reveal-up">
@@ -230,12 +267,14 @@
         </div>
     </section>
 
+    <!-- PRICING SECTION (CONNECTED WITH WHATSAPP) -->
     <section id="pricing" class="py-40 px-8">
         <div class="text-center mb-32">
             <h2 class="heading-font text-5xl reveal-up italic">ACCESS <span class="outline-text">PROTOCOLS</span></h2>
         </div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
+            <!-- Basic Plan -->
             <div class="border border-white/5 p-12 rounded-[60px] flex flex-col justify-between reveal-up group hover:bg-zinc-950 transition-all duration-500">
                 <div>
                     <h4 class="text-[10px] font-black uppercase tracking-[8px] text-gray-600 mb-8">Basic Protocol</h4>
@@ -247,9 +286,14 @@
                         <li class="flex items-center gap-4 opacity-20"><span class="text-red-600">✘</span> Personal Trainer</li>
                     </ul>
                 </div>
-                <button class="mt-20 w-full py-4 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-black transition">Initiate</button>
+                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20enroll%20in%20the%20Basic%20Protocol%20(Rs.1499%2Fmo)." 
+                   target="_blank" 
+                   class="mt-20 w-full py-4 text-center border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-black transition block">
+                   Initiate via WhatsApp
+                </a>
             </div>
             
+            <!-- Elite Plan -->
             <div class="bg-red-600 p-12 rounded-[60px] flex flex-col justify-between reveal-up transform lg:scale-110 shadow-2xl shadow-red-600/30 relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 heading-font text-[15rem] opacity-[0.05] italic pointer-events-none uppercase">ELITE</div>
                 <div>
@@ -263,9 +307,14 @@
                         <li class="flex items-center gap-4"><span>✔</span> Priority Session Booking</li>
                     </ul>
                 </div>
-                <button class="mt-20 w-full py-4 bg-white text-black rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition">Acquire Access</button>
+                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20enroll%20in%20the%20Elite%20Protocol%20(Rs.2999%2Fmo)." 
+                   target="_blank" 
+                   class="mt-20 w-full py-4 text-center bg-white text-black rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition block shadow-lg">
+                   Acquire Access
+                </a>
             </div>
             
+            <!-- Legend Plan -->
             <div class="border border-white/5 p-12 rounded-[60px] flex flex-col justify-between reveal-up group hover:bg-zinc-950 transition-all duration-500">
                 <div>
                     <h4 class="text-[10px] font-black uppercase tracking-[8px] text-gray-600 mb-8">Legend Protocol</h4>
@@ -277,31 +326,36 @@
                         <li class="flex items-center gap-4"><span class="text-red-600">✔</span> Exclusive Merch Drop</li>
                     </ul>
                 </div>
-                <button class="mt-20 w-full py-4 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-black transition">Commit Now</button>
+                <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20want%20to%20commit%20to%20the%20Legend%20Protocol%20(Rs.19999%2Fyr)." 
+                   target="_blank" 
+                   class="mt-20 w-full py-4 text-center border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-black transition block">
+                   Commit Now
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="pt-40 pb-12 bg-black border-t border-white/5 px-8 relative overflow-hidden">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32 relative z-10">
             <div class="col-span-2">
-                <div class="heading-font text-5xl font-black italic italic mb-10">RUDRA<span class="text-red-600">KSH</span></div>
+                <div class="heading-font text-5xl font-black italic mb-10">RUDRA<span class="text-red-600">KSH</span></div>
                 <p class="text-gray-500 text-sm max-w-sm mb-12 leading-loose">
                     Jabalpur ka sabse advanced training center. Hum sirf gym nahi hain, hum ek lifestyle hain jo aapko peak performance par lekar jaata hai. Join the elite community today.
                 </p>
                 <div class="flex gap-8 text-[10px] font-black uppercase tracking-[4px]">
                     <a href="#" class="hover:text-red-600 transition">Instagram</a>
-                    <a href="#" class="hover:text-red-600 transition">Whatsapp</a>
+                    <a href="https://wa.me/919876543210?text=Hi%20Rudraksh%20Gym%2C%20I%20am%20reaching%20out%20from%20your%20website." target="_blank" class="text-[#25D366] hover:underline transition">WhatsApp</a>
                     <a href="#" class="hover:text-red-600 transition">Twitter</a>
                 </div>
             </div>
             <div>
                 <h5 class="text-[9px] font-black uppercase tracking-[5px] text-gray-600 mb-10 italic">Internal Links</h5>
                 <ul class="space-y-6 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                    <li><a href="#" class="hover:text-white transition">Our Coaches</a></li>
-                    <li><a href="#" class="hover:text-white transition">Success Matrix</a></li>
-                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-white transition">Elite Merch</a></li>
+                    <li><a href="#about" class="hover:text-white transition">History</a></li>
+                    <li><a href="#programs" class="hover:text-white transition">Systems</a></li>
+                    <li><a href="#bmi" class="hover:text-white transition">Matrix Scan</a></li>
+                    <li><a href="#pricing" class="hover:text-white transition">Access Pass</a></li>
                 </ul>
             </div>
             <div>
@@ -310,7 +364,9 @@
                     Civil Lines / Wright Town Area,<br>
                     Jabalpur, Madhya Pradesh 482001
                 </p>
-                <p class="text-xs font-black text-red-600 uppercase tracking-widest">Inquiry: +91 98XX XXX XX</p>
+                <a href="https://wa.me/919876543210" target="_blank" class="text-xs font-black text-red-600 uppercase tracking-widest hover:underline block">
+                    Inquiry: +91 98XX XXX XX
+                </a>
             </div>
         </div>
         
@@ -324,7 +380,7 @@
                 <div class="w-8 h-1 bg-white/10"></div>
             </div>
         </div>
-    </section>
+    </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
